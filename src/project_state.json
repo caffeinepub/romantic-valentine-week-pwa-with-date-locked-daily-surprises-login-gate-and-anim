@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a cute romantic PWA for Valentine week with a login gate, day-by-day content that only unlocks on the correct date, daily 11:00 AM notifications, and romantic 3D/animated interactions and visuals.",
+  "architectural_notes": [
+    "PWA with push notifications (requires service worker + notification permission; scheduling may rely on client/device behavior).",
+    "Day content must be time/date-gated so pages only open on the intended day.",
+    "Login uses a hardcoded password ('JaloMat') and hint text; this is not secure and is purely for playful gating.",
+    "Day-open interaction should trigger a reveal animation sequence (confetti + 3D romantic objects like flowers/gift boxes) rather than running globally/constantly."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-progressive-web-app-pwa-shell-for-a-valentine-week-experience-including-installability-manifest-service-worker-and-an-offline-friendly-loading-experience-for-previously-visited-pages",
+      "title": "Create a Progressive Web App (PWA) shell for a Valentine Week experience, including installability (manifest + service worker) and an offline-friendly loading experience for previously visited pages.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-romantic-login-screen-with-user-facing-text-in-english-including-1-a-prominent-romantic-message-2-a-password-input-gated-by-a-hardcoded-password-exactly-jalomat-and-3-a-hint-line-that-reads-exactly-something-that-i-say-you-at-least-50-times-a-day",
+      "title": "Implement a romantic login screen with user-facing text in English, including: (1) a prominent romantic message, (2) a password input gated by a hardcoded password exactly \"JaloMat\", and (3) a hint line that reads exactly \"Something that I say you at least 50 times a day\".",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-successful-login-show-a-will-you-be-my-valentine-prompt-with-two-actions-yes-routes-to-the-day-wise-valentine-week-experience-and-no-evasively-moves-away-as-the-pointer-approaches-a-natural-feeling-3d-animated-escape",
+      "title": "After successful login, show a \"Will you be my valentine?\" prompt with two actions: \"Yes\" routes to the day-wise Valentine Week experience, and \"No\" evasively moves away as the pointer approaches (a natural-feeling 3D/animated escape).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-7-day-valentine-week-view-with-one-page-section-per-day-where-each-day-s-content-is-locked-until-its-designated-calendar-day-and-only-the-correct-day-can-be-opened-on-that-date",
+      "title": "Implement a 7-day Valentine Week view with one page/section per day, where each day’s content is locked until its designated calendar day and only the correct day can be opened on that date.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-daily-11-00-am-notifications-for-each-day-of-valentine-week-that-display-a-romantic-message-using-pwa-notification-capabilities-with-graceful-degradation-based-on-browser-support",
+      "title": "Add daily 11:00 AM notifications for each day of Valentine week that display a romantic message, using PWA notification capabilities with graceful degradation based on browser support.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-cute-romantic-visuals-and-animations-across-the-experience-including-roses-chocolates-lilies-and-confetti-with-natural-ish-3d-effects-where-appropriate-e-g-a-3d-hero-scene-on-the-login-prompt-screen-and-subtle-animated-decorations-on-day-pages",
+      "title": "Add cute romantic visuals and animations across the experience, including roses, chocolates, lilies, and confetti, with “natural-ish” 3D effects where appropriate (e.g., a 3D hero scene on the login/prompt screen and subtle animated decorations on day pages).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-persist-login-unlock-state-locally-so-the-user-does-not-need-to-re-enter-the-password-on-every-refresh-while-keeping-the-password-itself-hardcoded-and-not-user-changeable",
+      "title": "Persist login/unlock state locally so the user does not need to re-enter the password on every refresh, while keeping the password itself hardcoded and not user-changeable.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-romantic-visual-theme-across-all-screens-typography-spacing-components-backgrounds-with-a-distinct-style-that-is-consistent-end-to-end-avoid-default-template-styling",
+      "title": "Apply a coherent, romantic visual theme across all screens (typography, spacing, components, backgrounds) with a distinct style that is consistent end-to-end (avoid default/template styling).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-simple-day-content-placeholders-english-for-each-of-the-7-days-so-the-app-is-usable-end-to-end-even-if-final-content-is-to-be-replaced-later-ensure-content-is-easy-to-edit-in-one-place",
+      "title": "Add simple day content placeholders (English) for each of the 7 days so the app is usable end-to-end even if final content is to be replaced later; ensure content is easy to edit in one place.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-pwa-app-icons-and-a-romantic-splash-cover-style-background-image-as-static-assets-and-wire-them-into-the-manifest-and-ui",
+      "title": "Add PWA app icons and a romantic splash/cover-style background image as static assets and wire them into the manifest and UI.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-trigger-a-one-time-day-reveal-animation-sequence-when-an-unlocked-valentine-week-day-is-opened-i-e-when-daydetailscreen-is-shown-for-an-unlocked-day-the-reveal-sequence-must-include-a-visible-entrance-reveal-animation-for-the-day-content-and-must-not-run-for-locked-days",
+      "title": "Trigger a one-time “day reveal” animation sequence when an unlocked Valentine Week day is opened (i.e., when DayDetailScreen is shown for an unlocked day). The reveal sequence must include a visible entrance/reveal animation for the day content and must not run for locked days.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-increase-the-confetti-effect-intensity-specifically-for-the-day-reveal-sequence-when-an-unlocked-day-is-opened-show-an-extra-confetti-burst-that-is-noticeably-denser-than-the-current-daydetailscreen-confetti-currently-using-romanticdecorations-with-density-medium-ensure-the-confetti-burst-is-time-bounded-a-burst-and-does-not-continuously-accumulate-or-degrade-performance",
+      "title": "Increase the confetti effect intensity specifically for the day reveal sequence: when an unlocked day is opened, show an extra-confetti burst that is noticeably denser than the current DayDetailScreen confetti (currently using RomanticDecorations with density=\"medium\"). Ensure the confetti burst is time-bounded (a “burst”), and does not continuously accumulate or degrade performance.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-additional-romantic-3d-animations-choose-appropriate-elements-such-as-flowers-and-gift-boxes-that-appear-as-part-of-the-day-reveal-sequence-when-an-unlocked-day-is-opened-the-3d-animations-should-feel-romantic-and-celebratory-and-should-be-layered-in-a-way-that-does-not-obscure-the-day-s-main-message",
+      "title": "Add additional romantic 3D animations (choose appropriate elements such as flowers and gift boxes) that appear as part of the day reveal sequence when an unlocked day is opened. The 3D animations should feel romantic and celebratory and should be layered in a way that does not obscure the day’s main message.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a Valentine Week PWA with 7 day-wise pages that only unlock on their respective day/date",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement push notifications scheduled for 11:00 AM daily during Valentine week (PWA notifications)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Design a romantic login page with message, hardcoded password 'JaloMat', and hint text ('Something that I say you at least 50 times a day')",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "After successful login, show 'Will you be my valentine?' prompt with Yes routing to day-wise content and a No button that evasively flies away on hover/approach",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add cute romantic visuals and animations including natural-ish 3D effects and themed elements (roses, chocolates, lilies, confetti)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add per-day reveal animation when opening a day, including extra confetti and additional romantic 3D animations (e.g., flowers, gift boxes) triggered on day open",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "3d",
+  "projectName": "Romantic Valentine Week PWA with date-locked daily surprises, login gate, and animated 3D interactions",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

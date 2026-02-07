@@ -1,0 +1,81 @@
+{
+  "kind": "build_request",
+  "title": "Add per-day reveal animation with extra confetti and romantic 3D effects on day open",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Trigger a one-time “day reveal” animation sequence when an unlocked Valentine Week day is opened (i.e., when DayDetailScreen is shown for an unlocked day). The reveal sequence must include a visible entrance/reveal animation for the day content and must not run for locked days.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "THe animations should come in when she opens a day",
+          "yes build it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Opening an unlocked day in the Day Detail view triggers a reveal animation automatically without additional clicks.",
+        "Opening a locked day does not trigger the reveal animation sequence.",
+        "Navigating away and back to the same unlocked day triggers the reveal again (i.e., it is tied to opening the day screen, not a global one-time flag).",
+        "All user-facing text remains in English (no new non-English strings introduced)."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Increase the confetti effect intensity specifically for the day reveal sequence: when an unlocked day is opened, show an extra-confetti burst that is noticeably denser than the current DayDetailScreen confetti (currently using RomanticDecorations with density=\"medium\"). Ensure the confetti burst is time-bounded (a “burst”), and does not continuously accumulate or degrade performance.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "add more confetti"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On opening an unlocked day, the confetti burst is visibly denser than the existing medium confetti effect.",
+        "The burst ends automatically after a short duration and does not continue indefinitely.",
+        "The confetti overlay does not block interaction with the Day Detail screen (pointer events remain unaffected).",
+        "No noticeable performance degradation occurs after repeatedly opening multiple days."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add additional romantic 3D animations (choose appropriate elements such as flowers and gift boxes) that appear as part of the day reveal sequence when an unlocked day is opened. The 3D animations should feel romantic and celebratory and should be layered in a way that does not obscure the day’s main message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "add more confetti and more 3D animations",
+          "animations can be of flowers gift boxes and romantic stuff you can choose"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On opening an unlocked day, at least one clearly 3D animated romantic element (e.g., flower(s), gift box(es)) appears as part of the reveal sequence.",
+        "The 3D effect is visually distinct from the existing 2D RomanticScene particle canvas (i.e., not just more 2D particles).",
+        "The 3D animations do not prevent the user from reading the day message; content remains legible and accessible.",
+        "If the user has prefers-reduced-motion enabled, the reveal animations are reduced/disabled gracefully (no aggressive motion), while the page remains fully usable."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend files listed as immutable must not be modified: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep all changes within the existing React + TypeScript + Tailwind + React Query stack.",
+    "Do not add new backend logic for these animations; implement purely in the frontend."
+  ],
+  "nonGoals": [
+    "Do not change the login flow, hardcoded password behavior, or authentication persistence.",
+    "Do not change the day locking/unlocking rules or Valentine Week dates/content in frontend/src/config/valentineWeek.ts.",
+    "Do not add new notification behaviors beyond what already exists (11:00 AM reminders).",
+    "Do not introduce third-party auth providers or external services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

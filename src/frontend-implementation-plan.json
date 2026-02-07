@@ -1,0 +1,88 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Per-day reveal sequence: entrance animation, extra confetti burst, and romantic 3D reveal effects",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Run a one-time-per-screen-open day reveal animation sequence when viewing an unlocked day in DayDetailScreen; never run it for locked days.",
+      "acceptanceCriteria": [
+        "Opening an unlocked day in the Day Detail view triggers a reveal animation automatically without additional clicks.",
+        "Opening a locked day does not trigger the reveal animation sequence.",
+        "Navigating away and back to the same unlocked day triggers the reveal again (i.e., it is tied to opening the day screen, not a global one-time flag).",
+        "All user-facing text remains in English (no new non-English strings introduced)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/DayDetailScreen.tsx",
+          "operation": "modify",
+          "description": "Add a mount-triggered reveal sequence that only activates when the day is unlocked (e.g., local state keyed by dayNumber/view entry) and applies entrance/reveal animation classes to the day content container; ensure locked-day rendering path does not start the sequence."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS keyframes/utility classes for the DayDetail reveal entrance (e.g., fade/slide/scale) and ensure they respect prefers-reduced-motion (reduced/disabled motion while keeping layout usable)."
+        },
+        {
+          "path": "frontend/src/hooks/usePrefersReducedMotion.ts",
+          "operation": "create",
+          "description": "Create a small hook to detect prefers-reduced-motion (matchMedia) so DayDetailScreen and reveal effects can gracefully reduce/disable animations when requested."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add a time-bounded, denser extra-confetti burst on unlocked day open, without blocking interaction or causing performance issues.",
+      "acceptanceCriteria": [
+        "On opening an unlocked day, the confetti burst is visibly denser than the existing medium confetti effect.",
+        "The burst ends automatically after a short duration and does not continue indefinitely.",
+        "The confetti overlay does not block interaction with the Day Detail screen (pointer events remain unaffected).",
+        "No noticeable performance degradation occurs after repeatedly opening multiple days."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/RomanticDecorations.tsx",
+          "operation": "modify",
+          "description": "Extend confetti support to include a time-bounded \"burst\" mode/trigger (separate from existing continuous medium confetti): generate a denser set of pieces on trigger, automatically clear them after a short duration, and keep pointer-events disabled for the overlay."
+        },
+        {
+          "path": "frontend/src/screens/DayDetailScreen.tsx",
+          "operation": "modify",
+          "description": "Wire the new extra-confetti burst to the unlocked day reveal sequence (trigger on screen open for unlocked days only) while keeping the existing medium confetti behavior intact; ensure repeated navigations re-trigger the burst and that it does not run for locked days."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "If needed for the denser burst, add/adjust confetti animation utilities to keep the burst short-lived and performant (e.g., ensure animations finish and elements can be removed cleanly), while preserving prefers-reduced-motion behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add romantic celebratory 3D animations (e.g., flowers/gift boxes) as part of the unlocked day reveal sequence, layered so the main message remains readable and reduced-motion is respected.",
+      "acceptanceCriteria": [
+        "On opening an unlocked day, at least one clearly 3D animated romantic element (e.g., flower(s), gift box(es)) appears as part of the reveal sequence.",
+        "The 3D effect is visually distinct from the existing 2D RomanticScene particle canvas (i.e., not just more 2D particles).",
+        "The 3D animations do not prevent the user from reading the day message; content remains legible and accessible.",
+        "If the user has prefers-reduced-motion enabled, the reveal animations are reduced/disabled gracefully (no aggressive motion), while the page remains fully usable."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Romantic3DReveal.tsx",
+          "operation": "create",
+          "description": "Create a lightweight 3D-effect overlay component (CSS perspective/transforms) that renders romantic elements like a gift box and/or flowers with celebratory motion during the reveal; ensure it is pointer-events-none and visually subtle so it does not obscure the message."
+        },
+        {
+          "path": "frontend/src/screens/DayDetailScreen.tsx",
+          "operation": "modify",
+          "description": "Mount Romantic3DReveal only for unlocked days and only during the day reveal sequence; place it in the visual stack so the day content stays legible (e.g., behind the Card content or at low opacity around edges) and disable/reduce it when prefers-reduced-motion is enabled (using the new hook)."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add the required CSS keyframes/classes for the 3D reveal effects (e.g., rotateY/rotateX, pop-in, gentle drift) and ensure reduced-motion rules prevent aggressive motion while keeping the UI fully usable."
+        }
+      ]
+    }
+  ]
+}

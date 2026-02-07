@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        
+        /* Romantic warm palette - light mode */
+        --background: 0.98 0.015 15;
+        --foreground: 0.25 0.02 15;
+        --card: 1 0.01 15;
+        --card-foreground: 0.25 0.02 15;
+        --popover: 1 0.01 15;
+        --popover-foreground: 0.25 0.02 15;
+        --primary: 0.55 0.18 15;
+        --primary-foreground: 0.98 0.01 15;
+        --secondary: 0.92 0.03 25;
+        --secondary-foreground: 0.35 0.02 15;
+        --muted: 0.95 0.02 20;
+        --muted-foreground: 0.50 0.02 15;
+        --accent: 0.88 0.08 340;
+        --accent-foreground: 0.25 0.02 15;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.90 0.03 20;
+        --input: 0.90 0.03 20;
+        --ring: 0.55 0.18 15;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    .dark {
+        --background: 0.15 0.02 15;
+        --foreground: 0.95 0.01 15;
+        --card: 0.20 0.02 15;
+        --card-foreground: 0.95 0.01 15;
+        --popover: 0.18 0.02 15;
+        --popover-foreground: 0.95 0.01 15;
+        --primary: 0.70 0.15 340;
+        --primary-foreground: 0.15 0.02 15;
+        --secondary: 0.30 0.03 25;
+        --secondary-foreground: 0.95 0.01 15;
+        --muted: 0.28 0.02 20;
+        --muted-foreground: 0.65 0.02 15;
+        --accent: 0.45 0.12 340;
+        --accent-foreground: 0.95 0.01 15;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.95 0.01 15;
+        --border: 0.30 0.03 20;
+        --input: 0.30 0.03 20;
+        --ring: 0.70 0.15 340;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Lora', serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+    }
+}
+
+@layer utilities {
+    /* Romantic animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(-3deg); }
+    }
+    
+    @keyframes float-delayed {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-25px) rotate(8deg); }
+    }
+    
+    @keyframes pulse-glow {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+    }
+    
+    @keyframes shimmer {
+        0% { background-position: -1000px 0; }
+        100% { background-position: 1000px 0; }
+    }
+    
+    @keyframes confetti-fall {
+        0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    @keyframes confetti-burst {
+        0% { transform: translateY(-100vh) rotate(0deg) scale(1.5); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(1080deg) scale(0.8); opacity: 0; }
+    }
+    
+    @keyframes heart-beat {
+        0%, 100% { transform: scale(1); }
+        25% { transform: scale(1.1); }
+        50% { transform: scale(1); }
+        75% { transform: scale(1.05); }
+    }
+
+    @keyframes day-reveal {
+        0% { 
+            opacity: 0; 
+            transform: scale(0.9) translateY(20px); 
+        }
+        100% { 
+            opacity: 1; 
+            transform: scale(1) translateY(0); 
+        }
+    }
+
+    /* 3D Reveal Animations */
+    @keyframes gift-slide-in-left {
+        0% { 
+            transform: translateX(-200%) rotateY(-90deg) scale(0.5);
+            opacity: 0;
+        }
+        50% {
+            transform: translateX(20%) rotateY(20deg) scale(1.2);
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(-200%) rotateY(90deg) scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    @keyframes gift-slide-in-right {
+        0% { 
+            transform: translateX(200%) rotateY(90deg) scale(0.5);
+            opacity: 0;
+        }
+        50% {
+            transform: translateX(-20%) rotateY(-20deg) scale(1.2);
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(200%) rotateY(-90deg) scale(0.5);
+            opacity: 0;
+        }
+    }
+
+    @keyframes flower-spin-left {
+        0% { 
+            transform: rotate(0deg) scale(0) translateY(-50px);
+            opacity: 0;
+        }
+        30% {
+            transform: rotate(360deg) scale(1.3) translateY(0);
+            opacity: 1;
+        }
+        70% {
+            transform: rotate(720deg) scale(1.3) translateY(0);
+            opacity: 1;
+        }
+        100% { 
+            transform: rotate(1080deg) scale(0) translateY(50px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes flower-spin-right {
+        0% { 
+            transform: rotate(0deg) scale(0) translateY(-50px);
+            opacity: 0;
+        }
+        30% {
+            transform: rotate(-360deg) scale(1.3) translateY(0);
+            opacity: 1;
+        }
+        70% {
+            transform: rotate(-720deg) scale(1.3) translateY(0);
+            opacity: 1;
+        }
+        100% { 
+            transform: rotate(-1080deg) scale(0) translateY(50px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes bouquet-rise {
+        0% { 
+            transform: translateX(-50%) translateY(100%) scale(0.5) rotateZ(-20deg);
+            opacity: 0;
+        }
+        40% {
+            transform: translateX(-50%) translateY(-20%) scale(1.3) rotateZ(5deg);
+            opacity: 1;
+        }
+        60% {
+            transform: translateX(-50%) translateY(-20%) scale(1.3) rotateZ(-5deg);
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(-50%) translateY(-150%) scale(0.8) rotateZ(20deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blossom-drift-1 {
+        0% { 
+            transform: translateX(-100px) translateY(-100px) rotate(0deg) scale(0);
+            opacity: 0;
+        }
+        25% {
+            transform: translateX(20px) translateY(20px) rotate(180deg) scale(1.2);
+            opacity: 1;
+        }
+        75% {
+            transform: translateX(-20px) translateY(40px) rotate(360deg) scale(1.2);
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(100px) translateY(150px) rotate(540deg) scale(0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blossom-drift-2 {
+        0% { 
+            transform: translateX(100px) translateY(-100px) rotate(0deg) scale(0);
+            opacity: 0;
+        }
+        25% {
+            transform: translateX(-20px) translateY(20px) rotate(-180deg) scale(1.2);
+            opacity: 1;
+        }
+        75% {
+            transform: translateX(20px) translateY(40px) rotate(-360deg) scale(1.2);
+            opacity: 1;
+        }
+        100% { 
+            transform: translateX(-100px) translateY(150px) rotate(-540deg) scale(0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes heart-box-pop {
+        0% { 
+            transform: translate(-50%, -50%) scale(0) rotateY(0deg);
+            opacity: 0;
+        }
+        30% {
+            transform: translate(-50%, -50%) scale(1.5) rotateY(180deg);
+            opacity: 0.8;
+        }
+        70% {
+            transform: translate(-50%, -50%) scale(1.5) rotateY(360deg);
+            opacity: 0.8;
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(0) rotateY(540deg);
+            opacity: 0;
+        }
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-float-slow {
+        animation: float-slow 8s ease-in-out infinite;
+    }
+    
+    .animate-float-delayed {
+        animation: float-delayed 7s ease-in-out infinite 1s;
+    }
+    
+    .animate-pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    .animate-shimmer {
+        animation: shimmer 3s linear infinite;
+    }
+    
+    .animate-confetti {
+        animation: confetti-fall linear forwards;
+    }
+
+    .animate-confetti-burst {
+        animation: confetti-burst linear forwards;
+    }
+    
+    .animate-heart-beat {
+        animation: heart-beat 1.5s ease-in-out infinite;
+    }
+
+    .animate-day-reveal {
+        animation: day-reveal 0.8s ease-out forwards;
+    }
+
+    /* 3D Reveal Animations */
+    .animate-3d-gift-left {
+        animation: gift-slide-in-left 3.5s ease-in-out forwards;
+    }
+
+    .animate-3d-gift-right {
+        animation: gift-slide-in-right 3.5s ease-in-out forwards;
+        animation-delay: 0.3s;
+    }
+
+    .animate-3d-flower-spin-left {
+        animation: flower-spin-left 3s ease-in-out forwards;
+        animation-delay: 0.2s;
+    }
+
+    .animate-3d-flower-spin-right {
+        animation: flower-spin-right 3s ease-in-out forwards;
+        animation-delay: 0.4s;
+    }
+
+    .animate-3d-bouquet-rise {
+        animation: bouquet-rise 3.5s ease-out forwards;
+        animation-delay: 0.5s;
+    }
+
+    .animate-3d-blossom-drift-1 {
+        animation: blossom-drift-1 3.5s ease-in-out forwards;
+        animation-delay: 0.6s;
+    }
+
+    .animate-3d-blossom-drift-2 {
+        animation: blossom-drift-2 3.5s ease-in-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    .animate-3d-heart-box-pop {
+        animation: heart-box-pop 3s ease-in-out forwards;
+        animation-delay: 1s;
+    }
+
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .animate-float,
+        .animate-float-slow,
+        .animate-float-delayed,
+        .animate-pulse-glow,
+        .animate-shimmer,
+        .animate-confetti,
+        .animate-confetti-burst,
+        .animate-heart-beat,
+        .animate-day-reveal,
+        .animate-3d-gift-left,
+        .animate-3d-gift-right,
+        .animate-3d-flower-spin-left,
+        .animate-3d-flower-spin-right,
+        .animate-3d-bouquet-rise,
+        .animate-3d-blossom-drift-1,
+        .animate-3d-blossom-drift-2,
+        .animate-3d-heart-box-pop {
+            animation: none;
+        }
+    }
+    
+    /* Romantic gradient backgrounds */
+    .bg-romantic-gradient {
+        background: linear-gradient(135deg, 
+            oklch(0.95 0.03 15) 0%, 
+            oklch(0.92 0.05 340) 50%, 
+            oklch(0.90 0.06 25) 100%);
+    }
+    
+    .bg-romantic-gradient-dark {
+        background: linear-gradient(135deg, 
+            oklch(0.20 0.03 15) 0%, 
+            oklch(0.25 0.05 340) 50%, 
+            oklch(0.22 0.04 25) 100%);
+    }
+    
+    /* Glass morphism effect */
+    .glass-card {
+        background: oklch(1 0.01 15 / 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid oklch(1 0.01 15 / 0.2);
+    }
+    
+    .dark .glass-card {
+        background: oklch(0.20 0.02 15 / 0.7);
+        border: 1px solid oklch(1 0.01 15 / 0.1);
+    }
+}

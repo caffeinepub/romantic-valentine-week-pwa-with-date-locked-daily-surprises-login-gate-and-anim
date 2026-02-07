@@ -1,2 +1,3 @@
-# romantic-valentine-week-pwa-with-date-locked-daily-surprises-login-gate-and-anim
-Exported from Caffeine project: Romantic Valentine Week PWA with date-locked daily surprises, login gate, and animated 3D interactions
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

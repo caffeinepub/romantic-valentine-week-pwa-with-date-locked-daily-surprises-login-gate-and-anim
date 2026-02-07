@@ -1,0 +1,65 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-trigger-a-one-time-day-reveal-animation-sequence-when-an-unlocked-valentine-week-day-is-opened-i-e-when-daydetailscreen-is-shown-for-an-unlocked-day-the-reveal-sequence-must-include-a-visible-entrance-reveal-animation-for-the-day-content-and-must-not-run-for-locked-days",
+      "featureTitle": "Trigger a one-time “day reveal” animation sequence when an unlocked Valentine Week day is opened (i.e., when DayDetailScreen is shown for an unlocked day). The reveal sequence must include a visible entrance/reveal animation for the day content and must not run for locked days.",
+      "files": [
+        "frontend/src/hooks/usePrefersReducedMotion.ts",
+        "frontend/src/index.css",
+        "frontend/src/screens/DayDetailScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-increase-the-confetti-effect-intensity-specifically-for-the-day-reveal-sequence-when-an-unlocked-day-is-opened-show-an-extra-confetti-burst-that-is-noticeably-denser-than-the-current-daydetailscreen-confetti-currently-using-romanticdecorations-with-density-medium-ensure-the-confetti-burst-is-time-bounded-a-burst-and-does-not-continuously-accumulate-or-degrade-performance",
+      "featureTitle": "Increase the confetti effect intensity specifically for the day reveal sequence: when an unlocked day is opened, show an extra-confetti burst that is noticeably denser than the current DayDetailScreen confetti (currently using RomanticDecorations with density=\"medium\"). Ensure the confetti burst is time-bounded (a “burst”), and does not continuously accumulate or degrade performance.",
+      "files": [
+        "frontend/src/components/RomanticDecorations.tsx",
+        "frontend/src/index.css",
+        "frontend/src/screens/DayDetailScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-additional-romantic-3d-animations-choose-appropriate-elements-such-as-flowers-and-gift-boxes-that-appear-as-part-of-the-day-reveal-sequence-when-an-unlocked-day-is-opened-the-3d-animations-should-feel-romantic-and-celebratory-and-should-be-layered-in-a-way-that-does-not-obscure-the-day-s-main-message",
+      "featureTitle": "Add additional romantic 3D animations (choose appropriate elements such as flowers and gift boxes) that appear as part of the day reveal sequence when an unlocked day is opened. The 3D animations should feel romantic and celebratory and should be layered in a way that does not obscure the day’s main message.",
+      "files": [
+        "frontend/src/components/Romantic3DReveal.tsx",
+        "frontend/src/index.css",
+        "frontend/src/screens/DayDetailScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

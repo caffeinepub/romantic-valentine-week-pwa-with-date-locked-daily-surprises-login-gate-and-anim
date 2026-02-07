@@ -1,0 +1,76 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T12:03:12.287Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-11",
+        "summary": "Trigger a one-time “day reveal” animation sequence when an unlocked Valentine Week day is opened (i.e., when DayDetailScreen is shown for an unlocked day). The reveal sequence must include a visible entrance/reveal animation for the day content and must not run for locked days.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css",
+          "frontend/src/hooks/usePrefersReducedMotion.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css",
+          "frontend/src/hooks/usePrefersReducedMotion.ts"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Increase the confetti effect intensity specifically for the day reveal sequence: when an unlocked day is opened, show an extra-confetti burst that is noticeably denser than the current DayDetailScreen confetti (currently using RomanticDecorations with density=\"medium\"). Ensure the confetti burst is time-bounded (a “burst”), and does not continuously accumulate or degrade performance.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/RomanticDecorations.tsx",
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/RomanticDecorations.tsx",
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Add additional romantic 3D animations (choose appropriate elements such as flowers and gift boxes) that appear as part of the day reveal sequence when an unlocked day is opened. The 3D animations should feel romantic and celebratory and should be layered in a way that does not obscure the day’s main message.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Romantic3DReveal.tsx",
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Romantic3DReveal.tsx",
+          "frontend/src/screens/DayDetailScreen.tsx",
+          "frontend/src/index.css"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/Romantic3DReveal.tsx",
+    "frontend/src/components/RomanticDecorations.tsx",
+    "frontend/src/hooks/usePrefersReducedMotion.ts",
+    "frontend/src/index.css",
+    "frontend/src/screens/DayDetailScreen.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
